@@ -1,5 +1,6 @@
 const mqtt = require('mqtt');
 const dotenv = require('dotenv');
+const { sendMail } = require('./mailer');
 
 const deviceRoot = 'root/';
 
@@ -20,4 +21,5 @@ client.on('message', (topic, message) => {
   console.log(topic);
   message = JSON.parse(message);
   console.log(message);
+  sendMail('hjalmar.thunberg@gmail.com', message);
 });
