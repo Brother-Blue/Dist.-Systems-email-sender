@@ -20,6 +20,7 @@ client.on('connect', (err) => {
 client.on('message', (topic, message) => {
   console.log(topic);
   message = JSON.parse(message);
-  console.log(message);
-  sendMail('hjalmar.thunberg@gmail.com', message);
+  console.log(message[0]);
+  // TODO: Pass in patient's email with the message received from Appointment Subscriber
+  // sendMail(message.email, message);
 });
