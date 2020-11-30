@@ -1,9 +1,9 @@
 const nodemailer = require('nodemailer');
 
-async function sendMail(emailAddress, emailText) {
-    console.log('Sending email address to:' + emailAddress);
+async function sendMail(emailText) {
 
-    emailMessage = emailText[0];
+    emailMessage = JSON.parse(emailText);
+    console.log('Sending email address to:' + emailMessage.email);
     nodemailer.createTestAccount((err) => {
         if (err) return console.error(error);
 
@@ -18,10 +18,10 @@ async function sendMail(emailAddress, emailText) {
         });
     
         let message = {
-            to: `<${emailAddress}>`,
+            to: `<${emailMessage.email}>`,
             subject: 'Appointment confirmation',
             text: '', 
-            html: `<h3>Your appointment:</h3>
+            html: `<h3>Hello ${emailMessage.name}! Your appointment:</h3>
                     <p>Date: ${emailMessage.date.substring(0, 10)}</p>
                     <p>Time: ${emailMessage.date.substring(11, 16)}</p>`
         };

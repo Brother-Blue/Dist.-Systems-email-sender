@@ -2,7 +2,7 @@ const mqtt = require('mqtt');
 const dotenv = require('dotenv');
 const { sendMail } = require('./mailer');
 
-const deviceRoot = 'root/';
+const deviceRoot = 'dentistimo/';
 
 dotenv.config();
 const client = mqtt.connect({
@@ -12,15 +12,11 @@ const client = mqtt.connect({
 
 client.on('connect', (err) => {
   if (err.errorCode === -1) return console.error(err);
-  client.subscribe(`${deviceRoot}appointments`);
-  client.subscribe(`${deviceRoot}appointments/*`);
+  client.subscribe(`${deviceRoot}notifier`);
   console.log(' >> Notifier subscribed...');
 });
 
-client.on('message', (topic, message) => {
-  console.log(topic);
-  message = JSON.parse(message);
-  console.log(message[0]);
-  // TODO: Pass in patient's email with the message received from Appointment Subscriber
-  // sendMail(message.email, message);
+client.on('message', (topic, payload) => {
+  sendMail(payload);
+  console.log('sending mail!')
 });
