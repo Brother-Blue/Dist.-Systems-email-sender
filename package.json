@@ -1,0 +1,20 @@
+{
+  "name": "notifier",
+  "version": "1.0.0",
+  "description": "# Table of contents 1. [Purpose](#purpose)     1. [What](#what)     2. [Why](#why)     2. [How](#how) 2. [Requirements (SRS)](#requirements) 3. [Architecture (SAD)](#architecture) 4. [Developers](#developers)",
+  "main": "notifier.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.chalmers.se:courses/dit355/2020/group-7/notifier.git"
+  },
+  "author": "group-7",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mqtt": "^4.2.6",
+    "nodemailer": "^6.4.16"
+  }
+}
