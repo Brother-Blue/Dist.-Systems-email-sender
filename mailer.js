@@ -5,7 +5,7 @@ async function sendMail(emailText) {
     emailMessage = JSON.parse(emailText);
     console.log('Sending email address to:' + emailMessage.email);
     nodemailer.createTestAccount((err) => {
-        if (err) return console.error(error);
+        if (err) return err;
 
         let transporter = nodemailer.createTransport({
             service: "Gmail",
@@ -27,7 +27,7 @@ async function sendMail(emailText) {
         };
 
         transporter.sendMail(message, (err) => {
-            if (err) return console.error(err);
+            if (err) return err;
             transporter.close();
         });
     });
