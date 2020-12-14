@@ -18,5 +18,7 @@ client.on('connect', (err) => {
 
 client.on('message', (topic, payload) => {
   sendMail(payload);
+  const p = JSON.parse(payload);
+  client.publish(deviceRoot + 'log/confirmation', `Confirmation booked for ${p.name}, sent email to ${p.emailaddress}`);
   console.log('sending mail!')
 });
