@@ -9,4 +9,3 @@ build:
     - docker
   script:
     - npm install
-    - node notifier.js
