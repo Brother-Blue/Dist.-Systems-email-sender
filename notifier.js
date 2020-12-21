@@ -20,7 +20,7 @@ client.on('close', () => {
 })
 client.on('connect', (err) => {
   if (err.errorCode === -1) {
-    client.publish(root + '/log/error', `ERROR: ${err}`);
+    client.publish(root + '/log/error', `ERROR: ${err}`, 2);
   }
   client.subscribe(`${root}notifier`);
   console.log(' >> Notifier subscribed...');
@@ -29,9 +29,9 @@ client.on('connect', (err) => {
 client.on('message', (topic, payload) => {
   const err = sendMail(payload);
   if (err) {
-    client.publish(root + 'log/error', `ERROR: ${err}`);
+    client.publish(root + 'log/error', `ERROR: ${err}`, 2);
   }
   const p = JSON.parse(payload);
-  client.publish(root + 'log/confirmation', `Confirmation booked for ${p.name}, sent email to ${p.emailaddress}`);
+  client.publish(root + 'log/confirmation', `Confirmation booked for ${p.name}, sent email to ${p.emailaddress}`, 1);
   console.log('sending mail!')
 });
