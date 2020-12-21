@@ -1,9 +1,11 @@
 const nodemailer = require("nodemailer");
 
-// nodemailer function for sending email
+// Nodemailer function for sending email
 async function sendMail(emailText) {
+  
   emailMessage = JSON.parse(emailText);
   console.log("Sending email address to:" + emailMessage.emailaddress);
+
   nodemailer.createTestAccount((err) => {
     if (err) return err;
     // Login to emailer sender
@@ -27,7 +29,7 @@ async function sendMail(emailText) {
       text: "",
       html: `<h3>Hello ${emailMessage.name}! Your appointment:</h3>
                     <p>Date: ${emailMessage.date.substring(0, 10)}</p>
-                    <p>Time: ${emailMessage.date.substring(11, 20)}</p>`,
+                    <p>Time: ${emailMessage.date.substring(11, 22)}</p>`,
     };
 
     // Send email
