@@ -28,6 +28,8 @@ client.on("connect", (err) => {
   console.log(" >> Notifier subscribed...");
 });
 
+// When a message is published to the notifier topic, an email will be sent
+// to the email address attached to the payload.
 client.on("message", (topic, payload) => {
   const err = sendMail(payload);
   if (err) {
