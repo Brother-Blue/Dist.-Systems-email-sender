@@ -1,30 +1,16 @@
-# Notifier
+#  EmailSender
 
-# Table of contents
-1. [Purpose](#purpose)
-    1. [What](#what)
-    2. [Why](#why)
-    2. [How](#how)
-2. [Requirements (SRS)](#requirements)
-3. [Architecture (SAD)](#architecture)
-4. [Developers](#developers)
+## EmailSender High-level description 
 
-## Purpose <a name="purpose"></a>
-### What are you going to make? <a name="what"></a>
+The EmailSender contains a subscriber, described as 'Notifier', which subscribes to a topic which provides the data to be included in the email, and location where the email should be sent. The 'Mailer' contains the functionality that sends out an email.
 
-### Why will you make it? <a name="why"></a>
+### Communication
+All communication between the EmailSender and the rest of the system is done via a broker, using the MQTT-protocol applying a Publish/Subscribe architectural style. 
 
-### How are you going to make it? <a name="how"></a>
+### How to run
 
-## Requirements (SRS) <a name="requirements"></a>
+1. Move to the notifier folder
 
-## Architecture (SAD) <a name="architecture"></a>
+1. Run npm install in the terminal
 
-## Developers <a name="developers"></a>
-
-- [Clementine Jensen](https://github.com/clementinejensen)
-- [Christian O'Neill](https://github.com/Brother-Blue)
-- [Hjalmar Thunberg](https://github.com/Hjalmar-Thunberg)
-- [Hugo Hempel](https://github.com/HugoHempel)
-- [Linus Ivarsson](https://github.com/linusivarssons)
-- [Linus Åberg](https://github.com/LinusAaberg)
+1. Run node notifier.js in the terminal
